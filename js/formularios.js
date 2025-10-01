@@ -155,8 +155,6 @@ document.getElementById('reservaForm').addEventListener('submit', function (e) {
         citas.push(cita);
         localStorage.setItem('citas', JSON.stringify(citas));
 
-        window.location.href = "citas.html";
-
         const fechaFormateada = new Date(fecha + 'T' + hora).toLocaleDateString('es-ES', {
             weekday: 'long',
             year: 'numeric',
@@ -168,11 +166,18 @@ document.getElementById('reservaForm').addEventListener('submit', function (e) {
         document.getElementById('confDni').textContent = dni;
         document.getElementById('confEspecialidad').textContent = especialidad;
         document.getElementById('confFechaHora').textContent = `${fechaFormateada} a las ${hora}`;
+
+        document.getElementById('reservaForm').style.display = 'none';
         document.getElementById('confirmacion').style.display = 'block';
         document.getElementById('confirmacion').scrollIntoView({ behavior: 'smooth' });
 
+        setTimeout(() => {
+            window.location.href = "citas.html";
+        }, 10000); // 10 segundos
+
         this.reset();
     }
+
 });
 
 const hoy = new Date().toISOString().split('T')[0];

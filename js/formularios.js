@@ -1,3 +1,18 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const params = new URLSearchParams(window.location.search);
+    const especialidadURL = params.get("especialidad");
+
+    if (especialidadURL) {
+        const select = document.getElementById("especialidad");
+        for (let option of select.options) {
+            if (option.value.toLowerCase() === especialidadURL.toLowerCase()) {
+                option.selected = true;
+                break;
+            }
+        }
+    }
+});
+
 document.getElementById('reservaForm').addEventListener('submit', function (e) {
     e.preventDefault();
 
@@ -125,6 +140,8 @@ document.getElementById('reservaForm').addEventListener('submit', function (e) {
             estado: 'Pendiente'
         };
 
+        sessionStorage.setItem('citaTemporal', JSON.stringify(cita));
+
         let citas = [];
         try {
             const citasGuardadas = localStorage.getItem('citas');
@@ -137,6 +154,8 @@ document.getElementById('reservaForm').addEventListener('submit', function (e) {
 
         citas.push(cita);
         localStorage.setItem('citas', JSON.stringify(citas));
+
+        window.location.href = "citas.html";
 
         const fechaFormateada = new Date(fecha + 'T' + hora).toLocaleDateString('es-ES', {
             weekday: 'long',

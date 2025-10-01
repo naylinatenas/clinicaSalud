@@ -29,6 +29,23 @@ let citas = [
     }
 ];
 
+document.addEventListener("DOMContentLoaded", () => {
+    const citaTemporal = sessionStorage.getItem("citaTemporal");
+    if (citaTemporal) {
+        const citaObj = JSON.parse(citaTemporal);
+        citas.push(citaObj);
+    }
+
+    renderCitas();
+    actualizarContadores();
+    configurarFiltros();
+
+    document.getElementById("searchInput").addEventListener("input", (e) => {
+        searchTerm = e.target.value.toLowerCase();
+        renderCitas();
+    });
+});
+
 let filtroEstado = "all";
 let searchTerm = "";
 

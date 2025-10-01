@@ -172,7 +172,7 @@ document.getElementById('reservaForm').addEventListener('submit', function (e) {
         document.getElementById('confirmacion').scrollIntoView({ behavior: 'smooth' });
 
         setTimeout(() => {
-            window.location.href = "citas.html";
+            window.location.href = "./citas.html";
         }, 10000); // 10 segundos
 
         this.reset();

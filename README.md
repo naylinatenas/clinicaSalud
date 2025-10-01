@@ -24,6 +24,8 @@ Notas:
 - La persistencia se realiza con LocalStorage del navegador.
 - No requiere servidor; funciona solo con archivos estáticos (recomendado abrir con Live Server para evitar restricciones de módulos en algunos navegadores).
 
+GITHUB PAGES LINK -> https://naylinatenas.github.io/clinicaSalud/
+
 GRUPO:07
 Integrantes:
    1. Acosta Plasencia, Naylin Atenas
